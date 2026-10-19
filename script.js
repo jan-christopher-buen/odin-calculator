@@ -33,3 +33,33 @@ function operate(operator, a, b) {
     }
 }
 
+const display = document.querySelector("#display");
+const digitButtons = document.querySelectorAll(".digit");
+const clearButton = document.querySelector("#clear");
+
+function updateDisplay(value) {
+    display.textContent = value;
+}
+
+digitButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const digit = button.textContent;
+
+        if (operator === "") {
+            firstNumber = firstNumber + digit;
+            updateDisplay(firstNumber);
+        } else {
+            secondNumber = secondNumber + digit;
+            updateDisplay(secondNumber);
+        }
+    });
+});
+
+clearButton.addEventListener("click", () => {
+    firstNumber = "";
+    operator = "";
+    secondNumber = "";
+    updateDisplay("0");
+});
+
+updateDisplay("0");
